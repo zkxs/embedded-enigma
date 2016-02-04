@@ -1,0 +1,8 @@
+# static objects
+*.o
+*.lib
+
+# build artifacts
+*.exe
+encode
+decode
