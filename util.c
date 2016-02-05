@@ -24,7 +24,6 @@ int isAllowed(const char *c)
 	}
 }
 
-
 char charToNumber(const char *c)
 {
 	if (*c >= 'a' && *c <= 'z') {

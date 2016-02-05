@@ -13,7 +13,7 @@ WINCC=x86_64-w64-mingw32-gcc
 CFLAGS=-O3 -std=c99 -Wall -Wmissing-prototypes
 
 # desired build targets
-TARGETS=encode decode encode.exe decode.exe
+TARGETS=decode decode.exe
 
 # libraries required during linking
 LIBS=libterm.o util.o algorithms.o
@@ -23,14 +23,10 @@ all: $(TARGETS)
 
 
 # build the executables
-encode: enigma.c $(LIBS)
-	$(CC) $(CFLAGS) -D ENCODE $(LIBS) $< -o $@
-encode.exe: enigma.c $(WINLIBS)
-	$(WINCC) $(CFLAGS) -D ENCODE $(WINLIBS) $< -o $@
 decode: enigma.c $(LIBS)
-	$(CC) $(CFLAGS) -D DECODE $(LIBS) $< -o $@
+	$(CC) $(CFLAGS) $(LIBS) $< -o $@
 decode.exe: enigma.c $(WINLIBS)
-	$(WINCC) $(CFLAGS) -D DECODE $(WINLIBS) $< -o $@
+	$(WINCC) $(CFLAGS) $(WINLIBS) $< -o $@
 
 
 # cross compile static libraries (the native compile is implicit)
